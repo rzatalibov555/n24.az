@@ -120,3 +120,4 @@ $lang["notifier_hacking_data"] = "Предоставленные данные н
 $lang["notifier_invalid_img_format"] = "Формат изображения не поддерживается.";
 $lang["page_not_found"] = "Страница не найдена";
 $lang["unchange_current_password"] = "Оставьте пустым, чтобы сохранить текущий пароль.";
+$lang["other"] = "ДРУГИЕ";

@@ -106,6 +106,7 @@ $lang["password"] = "Password";
 $lang["enter_your_password"] = "Enter your password";
 $lang["login"] = "Login";
 $lang["home"] = "Home";
+$lang["other"] = "OTHER";
 $lang["notifier_error"] = "Error!";
 $lang["notifier_danger"] = "Danger!";
 $lang["notifier_warning"] = "Warning!";

@@ -16,7 +16,9 @@ class UserController extends CI_Controller{
     public function index($lang = 'az')
     {
         // Dil dəyişəni view-ə ötürülür
+        $lang = $this->session->userdata('lang') ?? 'az';
         $data['lang'] = $lang;
+      
 
 
         $data['news_list']      = $this->NewsModel->with_author_category();
@@ -30,14 +32,23 @@ class UserController extends CI_Controller{
         $data['important_news_4'] = $this->NewsModel->get_news_by_type('important_news_4', 1); // Asagi sag (Vacib)
 
         $data['important_news_lent'] = $this->NewsModel->get_news_by_type('important_news_lent', 5); // Xeber lenti
-
-
+        
         $data['daily_news']     = $this->NewsModel->get_news_by_type('daily_news', 1);
         $data['general_news']   = $this->NewsModel->get_news_by_type('general_news', 1);
         
-        
-        
+        // kateqoriyalar Start//////////////////////////////////////
+        // Bütün aktiv kateqoriyalar
+        $categories = $this->NewsModel->get_all_active_categories();
 
+        // İlk 8 kateqoriya əsas menyuya
+        $main_categories = array_slice($categories, 0, 5);
+
+        // Qalanları "digər" altına
+        $other_categories = array_slice($categories, 5);
+
+        $data['main_categories'] = $main_categories;
+        $data['other_categories'] = $other_categories;
+        // kateqoriyalar End//////////////////////////////////////
         
 
         
@@ -56,6 +67,15 @@ class UserController extends CI_Controller{
     {
         $data['lang'] = $lang;
         $data['slug'] = $slug;
+
+        $category = $this->CategoryModel->get_by_slug($slug);
+
+        if (!$category) {
+            show_404();
+        }
+
+        $data['category'] = $category;
+
         $this->load->view("front/pages/categories-style-01", $data);
     }
 

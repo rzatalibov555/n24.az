@@ -127,3 +127,4 @@ $lang["notifier_hacking_data"] = "Göndərilən məlumatlar doğrulama testində
 $lang["notifier_invalid_img_format"] = "Şəkil formatı dəstəklənmir.";
 $lang["page_not_found"] = "Səhifə tapılmadı";
 $lang["unchange_current_password"] = "Mövcud şifrəni saxlamaq üçün boş buraxın.";
+$lang["other"] = "DİGƏR";

@@ -65,4 +65,24 @@ class NewsModel extends ENTITY_Model
 
         return $this->db->get()->result_array();
     }
+
+
+
+    public function get_all_active_categories()
+    {
+        return $this->db
+            ->where('status', 1)
+            ->order_by('id', 'ASC')
+            ->get('categories')
+            ->result_array();
+    }
+
+    public function get_categories_by_slug($slug)
+    {
+        return $this->db
+            ->where('slug', $slug)
+            ->where('status', 1)
+            ->get($this->table)
+            ->row_array();
+    }
 }
