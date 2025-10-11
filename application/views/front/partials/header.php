@@ -1,5 +1,7 @@
   <!--=================================
   Header -->
+
+  
   <header class="header header-sticky">
     <div class="topbar d-none d-md-block">
       <div class="container">
@@ -13,6 +15,11 @@
                     <ul class="list-unstyled top-menu">
                       <li><a href="<?php echo base_url('about'); ?>">Haqqımızda</a></li>
                       <li><a href="#">Reklam</a></li>
+                      <li>
+                        <a href="">
+            <button class="btn btn-danger "> <i class="fa fa-video-camera" aria-hidden="true"></i> LIVE</button>
+          </a>
+                      </li>
                     </ul>
                   </div>
                 </div>

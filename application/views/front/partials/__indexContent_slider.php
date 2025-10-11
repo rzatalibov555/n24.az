@@ -15,6 +15,9 @@
 
     .SliderImg_size {
         height: 370px !important;
+        object-fit: cover;
+        object-position: top;
+
     }
 
     .setir a {
@@ -99,7 +102,7 @@
                         <?php foreach ($important_news_1 as $news): ?>
                             <div class="swiper-slide">
                                 <div class="blog-post post-style-01">
-                                    <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                    <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                         <div class="blog-image">
                                             <?php if ($news['img']) { ?>
                                                 <img class="img-fluid SliderImg_size" src="<?php echo base_url('public/uploads/news/' . $news['img']); ?>" alt="<?php echo htmlspecialchars($news['title_' . $lang] ?? $news['title_az'], ENT_QUOTES, 'UTF-8'); ?>">
@@ -116,7 +119,7 @@
                                             ?>
                                         </span>
                                         <h4 class="blog-title setir fontSystem_ui">
-                                            <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                            <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                                 <?php
                                                 echo htmlspecialchars($news['title_' . $lang] ?? $news['title_az'], ENT_QUOTES, 'UTF-8');
                                                 ?>
@@ -124,7 +127,7 @@
                                         </h4>
                                         <div class="blog-post-meta">
                                             <div class="blog-post-time fontSystem_ui">
-                                                <a href="<?php echo base_url('detail/' . $news['id']); ?>"><i class="fa-solid fa-calendar-days"></i><?php echo date('d M Y | H:i', strtotime($news['created_at'])); ?></a>
+                                                <a href="<?php echo base_url('detail/' . $news['slug']); ?>"><i class="fa-solid fa-calendar-days"></i><?php echo date('d M Y | H:i', strtotime($news['created_at'])); ?></a>
                                             </div>
                                         </div>
                                     </div>
@@ -171,7 +174,7 @@
 
                                 <div class="blog-post-details">
                                     <h6 class="blog-title setir fontSystem_ui">
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>" class="f_size-17px">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>" class="f_size-17px">
                                             <?php
                                             echo htmlspecialchars(
                                                 $news['title_' . $lang] ?? $news['title_az'],
@@ -182,7 +185,7 @@
                                         </a>
                                     </h6>
                                     <div class="blog-post-time fontSystem_ui">
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                             <i class="fa-solid fa-calendar-days"></i>
                                             <?php echo date('d M Y | H:i', strtotime($news['created_at'])); ?>
                                         </a>
@@ -204,13 +207,13 @@
                             <div class="blog-post post-style-02 mt-4">
                                 <div class="blog-image">
                                     <?php if (!empty($news['img'])) {  ?>
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                             <img class="img-fluid"
                                                 src="<?php echo base_url('public/uploads/news/' . $news['img']); ?>"
                                                 alt="<?php echo htmlspecialchars($news['title_' . $lang] ?? $news['title_az'], ENT_QUOTES, 'UTF-8'); ?>">
                                         </a>
                                     <?php } else { ?>
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                             <img class="img-fluid"
                                                 src="<?php echo base_url('public/uploads/news/no-image.jpg'); ?>"
                                                 alt="<?php echo htmlspecialchars($news['title_' . $lang] ?? $news['title_az'], ENT_QUOTES, 'UTF-8'); ?>">
@@ -224,12 +227,12 @@
 
                                 <div class="blog-post-details">
                                     <h6 class="blog-title setir fontSystem_ui">
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>" class="f_size-17px">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>" class="f_size-17px">
                                             <?php echo htmlspecialchars($news['title_' . $lang] ?? $news['title_az'], ENT_QUOTES, 'UTF-8'); ?>
                                         </a>
                                     </h6>
                                     <div class="blog-post-time fontSystem_ui">
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                             <i class="fa-solid fa-calendar-days"></i>
                                             <?php echo date('d M Y | H:i', strtotime($news['created_at'])); ?>
                                         </a>
@@ -252,13 +255,13 @@
                             <div class="blog-post post-style-02 mt-4">
                                 <div class="blog-image">
                                     <?php if (!empty($news['img'])) { ?>
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                             <img class="img-fluid"
                                                 src="<?php echo base_url('public/uploads/news/' . $news['img']); ?>"
                                                 alt="<?php echo htmlspecialchars($news['title_' . $lang] ?? $news['title_az'], ENT_QUOTES, 'UTF-8'); ?>">
                                         </a>
                                     <?php } else { ?>
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                             <img class="img-fluid"
                                                 src="<?php echo base_url('public/uploads/news/no-image.jpg'); ?>"
                                                 alt="<?php echo htmlspecialchars($news['title_' . $lang] ?? $news['title_az'], ENT_QUOTES, 'UTF-8'); ?>">
@@ -272,12 +275,12 @@
 
                                 <div class="blog-post-details">
                                     <h6 class="blog-title setir fontSystem_ui">
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>" class="f_size-17px">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>" class="f_size-17px">
                                             <?php echo htmlspecialchars($news['title_' . $lang] ?? $news['title_az'], ENT_QUOTES, 'UTF-8'); ?>
                                         </a>
                                     </h6>
                                     <div class="blog-post-time fontSystem_ui">
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                             <i class="fa-solid fa-calendar-days"></i>
                                             <?php echo date('d M Y | H:i', strtotime($news['created_at'])); ?>
                                         </a>
@@ -312,7 +315,7 @@
                                 </span>
 
                                 <h6 class="blog-title setir fontSystem_ui">
-                                    <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                    <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                         <?php
                                         echo htmlspecialchars(
                                             $news['title_' . $lang] ?? $news['title_az'],
@@ -325,7 +328,7 @@
 
                                 <div class="blog-post-meta">
                                     <div class="blog-post-time fontSystem_ui">
-                                        <a href="<?php echo base_url('detail/' . $news['id']); ?>">
+                                        <a href="<?php echo base_url('detail/' . $news['slug']); ?>">
                                             <i class="fa-solid fa-calendar-days"></i>
                                             <?php echo date('d M Y | H:i', strtotime($news['created_at'])); ?>
                                         </a>

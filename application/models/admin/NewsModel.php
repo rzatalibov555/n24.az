@@ -32,4 +32,9 @@ class NewsModel extends ENTITY_Model
             ->get()
             ->result_array();
     }
+
+    public function slug_exists($slug)
+{
+    return $this->db->where('slug', $slug)->count_all_results($this->table_name) > 0;
+}
 }

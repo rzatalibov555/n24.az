@@ -140,6 +140,21 @@ class NewsController extends CRUD_Controller
                 "status" => $status === "on",
             ]);
 
+
+
+            // Slug yaradılması (az başlığa əsasən)
+            $slug_base = generate_slug($title_az);
+
+            // Unikal slug yoxlanması
+            $slug = $slug_base;
+            $counter = 1;
+            while ($this->NewsModel->slug_exists($slug)) {
+                $slug = $slug_base . '-' . $counter;
+                $counter++;
+            }
+
+            $data['slug'] = $slug;
+
             $this->NewsModel->create($data);
 
             $this->notifier("notifier", "success", [
@@ -289,7 +304,18 @@ class NewsController extends CRUD_Controller
                 "status" => $status === "on",
                 "img" => $current_img_name,
             ];
-           
+
+            // SLUG
+            $slug_base = generate_slug($title_az);
+            $slug = $slug_base;
+            $counter = 1;
+            while ($this->NewsModel->slug_exists($slug)) {
+                $slug = $slug_base . '-' . $counter;
+                $counter++;
+            }
+            $data['slug'] = $slug;
+            // SLUG
+
             $this->NewsModel->update($id, $data);
 
             $this->notifier("notifier", "success", [
