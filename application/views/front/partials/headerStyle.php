@@ -1,11 +1,26 @@
+<?php
+// $this->load->helper('language_switcher_helper');
+// $lang = $this->session->userdata('lang') ?? 'az';
+?>
+
+<?php
+$this->load->helper('language_switcher_helper');
+$lang = $lang ?? ($this->uri->segment(1) ?? 'az');
+
+if (!in_array($lang, ['az', 'en'])) {
+    $lang = 'az';
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= $lang ?>">
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Nezzy - News and Magazine HTML Template" />
-    <meta name="author" content="potenzaglobalsolutions.com" />
+    <meta name="keywords" content="n24.az, xəbər, xeber, azərbaycan xəbərləri, son dəqiqə xəbərləri, gündəm, siyasət, iqtisadiyyat, maliyyə, idman, hava xəbərləri, elm və təhsil, texnologiya xəbərləri, turizm xəbərləri, cəmiyyət xəbərləri, mədəniyyət xəbərləri, dünya xəbərləri, xarici xəbərlər, müharibə xəbərləri, təhlil, rəy, müsahibə, köşə yazıları, media, aktual xəbərlər, təhlükəsizlik, parlament xəbərləri, sosial xəbərlər, video xəbərlər, foto xəbərlər" />
+
+    
+ 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>N24.AZ</title>
 
@@ -13,7 +28,11 @@
     <link rel="shortcut icon" href="<?php echo base_url('public/front/') ?>images/favicon.ico" />
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> -->
+    <!-- LightGallery CSS -->
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css">
+
 
     <!-- CSS Global Compulsory (Do not remove)-->
     <link rel="stylesheet" href="<?php echo base_url('public/front/') ?>css/bootstrap/bootstrap.min.css" />
@@ -35,7 +54,18 @@
         top: 100px !important;
     }
 
+ .live{
+    padding: 5px 10px;
+    font-size: 12px;
+  }
 
+  .vi {
+    padding: 2px;
+    float: left!important;
+    position: absolute!important;
+    top: 15px!important;
+    left: 15px!important;
+}
     @media only screen and (min-width: 1199.20px) {
         .custom_col-2_size_reklam {
             width: 13% !important;
@@ -52,6 +82,10 @@
 
         .padding_scroll_index{
             padding-top: 220px !important;
+        }
+
+        .pad_top_side_detail{
+            padding-top: 0px!important;
         }
     }
 
@@ -74,3 +108,5 @@
 </style>
 
 <body>
+
+              	

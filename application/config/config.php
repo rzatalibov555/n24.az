@@ -64,7 +64,7 @@ $config["grecaptcha_secret_key"] = "6LcnPBcrAAAAAJAou3fso0tykHsPXfW3btVQGkuA";
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/n24/';
+$config['base_url'] = 'http://localhost/n24.az/';
 
 /*
 |--------------------------------------------------------------------------
@@ -266,7 +266,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------

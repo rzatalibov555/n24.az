@@ -54,16 +54,90 @@ defined('BASEPATH') or exit('No direct script access allowed');
 // $route["default_controller"] = "DefaultController";
 
 
-// RZA Start
-$route["default_controller"] = "UserController";
-$route["index"]["GET"] = "UserController/index";
-$route["about"]["GET"] = "UserController/about";
-$route["category/(:any)"]["GET"] = "UserController/category/$1";
-$route["detail/(:any)"]["GET"] = "UserController/detail/$1";
-// RZA End
+// // RZA Start
+// $route["default_controller"] = "UserController";
+// $route["index"]["GET"] = "UserController/index";
+// $route["about"]["GET"] = "UserController/about";
+// $route["category/(:any)"]["GET"] = "UserController/category/$1";
+// // $route["detail/(:any)"]["GET"] = "UserController/detail/$1";
+// // RZA End
 
 
-$route["404_override"] = "ErrorController";
+
+// // multi
+
+
+
+
+
+// $route['^(en|az)/(news|xeber)/(:any)'] = 'UserController/detail/$3';
+
+// $route['^(en|az)/(.+)$'] = "$2";
+
+// $route['^(en|az)$'] = $route['default_controller'];
+
+// // multi
+
+
+// ==========================================================
+// $route['default_controller'] = 'UserController';
+// $route['404_override'] = '';
+// $route['translate_uri_dashes'] = FALSE;
+
+// // Ana səhifə — default olaraq Azərbaycan dilində
+// $route['^$'] = 'UserController/index/az';
+
+// // Dilə əsasən ana səhifə
+// $route['^(az|en)$'] = 'UserController/index/$1';
+
+// // Xəbər detal səhifəsi
+// $route['^(az|en)/(news|xeber)/(:any)$'] = 'UserController/detail/$3';
+
+// // Kateqoriya səhifəsi
+// $route['^(az|en)/category/(:any)$'] = 'UserController/category/$3';
+
+// // Haqqımızda səhifəsi
+// $route['^(az|en)/about$'] = 'UserController/about/$1';
+
+// // Digər çoxdilli səhifələr
+// $route['^(az|en)/(.+)$'] = '$2';
+
+
+$route['default_controller'] = 'UserController';
+
+// Detail səhifələr
+$route['^(en|az)/(news|xeber)/(:any)$'] = 'UserController/detail/$3';
+$route['^(en|az)/(category|kateqoriya)/(:any)$'] = 'UserController/category/$3/$1';
+
+// Kateqoriya və digər spesifik səhifələr (məsələn, about, category)
+$route['^(en|az)/about'] = 'UserController/about';
+// $route['^(en|az)/category/(:any)'] = 'UserController/category/$2';
+
+$route['^(en|az)/(section|bolme)/(:any)$'] = 'UserController/category_type/$3/$1';
+
+
+// Generic fallback (digər hər şey)
+$route['^(en|az)/(.+)$'] = "$2";
+
+// Əsas səhifə üçün
+$route['^(en|az)$'] = 'UserController/index';
+$route['language/switch/(:any)'] = 'language/switch/$1';
+// ==========================================================
+
+
+// ==========================================================================
+$route["404_override"] = "ErrorController"; // ORIGINAL
+
+
+// Frontend error pages (dilli və dilsiz variantlar)
+$route['error_404'] = 'UserController/error_404';
+$route['(az|en)/error_404'] = 'UserController/error_404/$1';
+
+
+// CodeIgniter 404 override → ErrorController
+$route['404_override'] = 'ErrorController/index';
+// ==========================================================================
+
 $route["translate_uri_dashes"] = FALSE;
 
 /*<================> Language Routes <================>*/

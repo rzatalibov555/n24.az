@@ -198,10 +198,10 @@
                                         <option value="general_news">
                                             <?= $this->lang->line("general_news"); ?>
                                         </option>
-                                        <option value="naxcivan">
+                                        <option value="nakhchivan">
                                             <?= $this->lang->line("naxcivan"); ?>
                                         </option>
-                                        <option value="zengezur_corridor">
+                                        <option value="zangezur_corridor">
                                             <?= $this->lang->line("zengezur_corridor"); ?>
                                         </option>
                                     </select>

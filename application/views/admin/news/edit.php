@@ -232,15 +232,15 @@
                                             <?= $this->lang->line("general_news"); ?>
                                         </option>
 
-                                        <option value="naxcivan"
-                                            <?php if (isset($news['type']) && $news['type'] == 'naxcivan') {
+                                        <option value="nakhchivan"
+                                            <?php if (isset($news['type']) && $news['type'] == 'nakhchivan') {
                                                 echo 'selected';
                                             } ?>>
                                             <?= $this->lang->line("naxcivan"); ?>
                                         </option>
 
-                                        <option value="zengezur_corridor"
-                                            <?php if (isset($news['type']) && $news['type'] == 'zengezur_corridor') {
+                                        <option value="zangezur_corridor"
+                                            <?php if (isset($news['type']) && $news['type'] == 'zangezur_corridor') {
                                                 echo 'selected';
                                             } ?>>
                                             <?= $this->lang->line("zengezur_corridor"); ?>

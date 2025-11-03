@@ -64,7 +64,7 @@ class NewsController extends CRUD_Controller
         $status = $this->input->post("status", true);
         $categories_collection = $this->CategoriesModel->all();
         $categories_ids = array_column($categories_collection, "id");
-        $types_allowed = ["daily_news", "important_news_1", "important_news_2", "important_news_3", "important_news_4", "important_news_lent", "general_news", "interview", "naxcivan", "zengezur_corridor"];
+        $types_allowed = ["daily_news", "important_news_1", "important_news_2", "important_news_3", "important_news_4", "important_news_lent", "general_news", "interview", "nakhchivan", "zangezur_corridor"];
 
         if (!in_array($category_id, $categories_ids) || !in_array($type, $types_allowed)) {
             $this->notifier("notifier", "danger", [
@@ -157,6 +157,11 @@ class NewsController extends CRUD_Controller
 
             $this->NewsModel->create($data);
 
+            // ✅ Cache təmizlə
+            // $this->NewsModel->clear_cache();
+            // $this->NewsModel->clear_cache_all();
+            // $this->NewsModel->invalidate_news_cache($data['slug']);
+
             $this->notifier("notifier", "success", [
                 "title" => $this->lang->line("notifier_success"),
                 "description" => $this->lang->line("notifier_success_added")
@@ -223,7 +228,7 @@ class NewsController extends CRUD_Controller
 
         $categories_collection = $this->CategoriesModel->all();
         $categories_ids = array_column($categories_collection, "id");
-        $types_allowed = ["daily_news", "important_news_1", "important_news_2", "important_news_3", "important_news_4", "important_news_lent", "general_news", "interview", "naxcivan", "zengezur_corridor"];
+        $types_allowed = ["daily_news", "important_news_1", "important_news_2", "important_news_3", "important_news_4", "important_news_lent", "general_news", "interview", "nakhchivan", "zangezur_corridor"];
 
         if (!in_array($category_id, $categories_ids) || !in_array($type, $types_allowed)) {
             $this->notifier("notifier", "danger", [
@@ -317,6 +322,11 @@ class NewsController extends CRUD_Controller
             // SLUG
 
             $this->NewsModel->update($id, $data);
+            
+            // ✅ Cache təmizlə
+            // $this->NewsModel->clear_cache();
+            // $this->NewsModel->clear_cache_all();
+            // $this->NewsModel->invalidate_news_cache($data['slug']);
 
             $this->notifier("notifier", "success", [
                 "title" => $this->lang->line("notifier_success"),
@@ -359,6 +369,11 @@ class NewsController extends CRUD_Controller
         }
 
         $this->NewsModel->delete($id);
+
+        // ✅ Cache təmizlə
+        // $this->NewsModel->clear_cache();
+        // $this->NewsModel->clear_cache_all();
+        // $this->NewsModel->invalidate_news_cache($context["news"]["slug"]);
 
         $this->notifier("notifier", "success", [
             "title" => $this->lang->line("notifier_sucess"),
@@ -433,4 +448,8 @@ class NewsController extends CRUD_Controller
 
         $this->datatable_json("news", $columns, $searchable_columns);
     }
+
+
+
+
 }
