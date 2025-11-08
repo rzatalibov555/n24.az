@@ -21,11 +21,11 @@
             <div class="col-12">
               <div class="d-lg-flex align-items-center text-center">
                 <div class="topbar-left mb-2 mb-lg-0">
-                  <div class="topbar-date d-inline-flex"> <span class="date"><i class="fa-solid fa-calendar-days"></i> Bazar ertəsi, Oktyabr, 2025</span> </div>
+                  <div class="topbar-date d-inline-flex"> <span class="date"><i class="fa-solid fa-calendar-days"></i> <?= format_full_date(time(), $lang); ?></span> </div>
                   <div class="me-auto d-inline-flex">
                     <ul class="list-unstyled top-menu">
-                      <li><a href="<?php echo base_url('about'); ?>">Haqqımızda</a></li>
-                      <li><a href="#">Reklam</a></li>
+                      <!-- <li><a href="<?php echo base_url('about'); ?>">Haqqımızda</a></li>
+                      <li><a href="#">Reklam</a></li> -->
                       <li>
                         <a href="">
                           <button class="btn btn-danger live"> <i class="fa fa-video-camera" aria-hidden="true"></i> LIVE</button>
@@ -156,14 +156,14 @@
 
           <ul class="navbar-nav">
             <li class="nav-item menu_mar_right_5 <?= ($current_slug == 'nakhchivan') ? 'active' : '' ?>">
-              <a class="nav-link menu_border_style"
+              <a class="nav-link menu_border_style" style="padding: 5px 10px;"
                 href="<?= base_url($lang . '/' . ($lang == 'az' ? 'bolme' : 'section') . '/nakhchivan'); ?>">
                 <?= ($lang == 'az') ? "Naxçıvan" : "Nakhchivan"; ?>
               </a>
             </li>
 
             <li class="nav-item <?= ($current_slug == 'zangezur_corridor') ? 'active' : '' ?>">
-              <a class="nav-link menu_border_style"
+              <a class="nav-link menu_border_style" style="padding: 5px 10px;"
                 href="<?= base_url($lang . '/' . ($lang == 'az' ? 'bolme' : 'section') . '/zangezur_corridor'); ?>">
                 <?= ($lang == 'az') ? "Zəngəzur dəhlizi" : "Zangezur Corridor"; ?>
               </a>

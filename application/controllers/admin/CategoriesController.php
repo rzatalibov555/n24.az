@@ -47,8 +47,22 @@ class CategoriesController extends CRUD_Controller
         $category_name_ru = trim($this->input->post("category_name_ru", true));
         $category_status = $this->input->post("category_status", true);
 
+        // ==============================================================
+        $slug = generate_admin_slug($category_name_az);
+
+        $count = $this->CategoriesModel
+            ->db
+            ->where('cate_slug', $slug)
+            ->count_all_results('categories');
+
+        if ($count > 0) {
+            $slug .= '-' . ($count + 1);
+        }
+        // ==============================================================
+
         if (!empty($category_name_az) && !empty($category_name_en) && !empty($category_name_ru)) {
             $data = [
+                "cate_slug" => $slug,
                 "name_az" => $category_name_az,
                 "name_en" => $category_name_en,
                 "name_ru" => $category_name_ru,
@@ -95,6 +109,7 @@ class CategoriesController extends CRUD_Controller
     {
         $context["category"] = $this->CategoriesModel->find($id);
 
+
         if (!empty($context["category"])) {
             $category_name_az = trim($this->input->post("category_name_az", true));
             $category_name_en = trim($this->input->post("category_name_en", true));
@@ -102,7 +117,23 @@ class CategoriesController extends CRUD_Controller
             $category_status = $this->input->post("category_status", true);
 
             if (!empty($category_name_az) && !empty($category_name_en) && !empty($category_name_ru)) {
+
+                // ✅ Slug yaradılır və eyni varsa, rəqəm artırılır
+                $slug = generate_admin_slug($category_name_az);
+
+                $count = $this->CategoriesModel
+                    ->db
+                    ->where('cate_slug', $slug)
+                    ->where('id !=', $id)
+                    ->count_all_results('categories');
+
+                if ($count > 0) {
+                    $slug .= '-' . ($count + 1);
+                }
+
+
                 $data = [
+                    "cate_slug" => $slug,
                     "name_az" => $category_name_az,
                     "name_en" => $category_name_en,
                     "name_ru" => $category_name_ru,

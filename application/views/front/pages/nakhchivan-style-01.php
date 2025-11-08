@@ -52,6 +52,10 @@
                                     'zangezur_corridor' => [
                                         'az' => 'Zəngəzur dəhlizi',
                                         'en' => 'Zangezur Corridor'
+                                    ],
+                                    'interview' => [
+                                        'az' => 'İntervyu',
+                                        'en' => 'Interview'
                                     ]
                                 ];
 
@@ -134,7 +138,7 @@
 
                                         <?php if (!empty($news->{'category_name_' . $lang})): ?>
                                             <a href="<?= base_url($lang . '/' . t('category_link') . '/' . $news->category_slug); ?>">
-                                                <span class="text-primary cateTransformTitle fontSystem_ui icon_color_genera cate-bg-<?= $news->category_slug; ?>">
+                                                <span class="text-primary cateTransformTitle fontSystem_ui icon_color_genera" style="background: <?= category_color($news->category_slug); ?>;">
                                                     <?= htmlspecialchars($news->{'category_name_' . $lang}, ENT_QUOTES, 'UTF-8'); ?>
                                                 </span>
                                             </a>

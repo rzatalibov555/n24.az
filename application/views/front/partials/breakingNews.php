@@ -3,7 +3,7 @@
   <section class="breaking-news">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-xl-2 col-lg-3 col-md-4 "> <span class="news-btn">Son xəbərlər <i class="fa-solid fa-caret-right"></i></span> </div>
+        <div class="col-xl-2 col-lg-3 col-md-4 "> <span class="news-btn"><?= ($lang == 'az') ? 'Son xəbərlər' : 'Latest News'; ?> <i class="fa-solid fa-caret-right"></i></span> </div>
         <div class="col-xl-10 col-lg-9 col-md-8">
           <div class="owl-carousel arrow-styel-03" data-nav-dots="false" data-nav-arrow="true" data-items="4" data-xl-items="4" data-lg-items="3" data-md-items="3" data-sm-items="2" data-xs-items="2" data-xx-items="1" data-autoheight="true">
             <!-- item-01 -->

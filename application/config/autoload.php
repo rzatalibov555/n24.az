@@ -89,7 +89,7 @@ $autoload['drivers'] = array('cache');
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url', 'file', 'utilities', 'slug','translate', 'language', 'date_helper');
+$autoload['helper'] = array('url', 'file', 'utilities', 'slug','translate', 'language', 'date_helper', 'date_current_helper', 'admin_slug', 'category_color');
 
 /*
 | -------------------------------------------------------------------

@@ -37,7 +37,23 @@ class UserController extends CI_Controller
         $data['important_news_lent'] = $this->NewsModel->get_news_by_type('important_news_lent', 5); // Xeber lenti     +
 
         $data['daily_news']     = $this->NewsModel->get_news_by_type('daily_news', 1);                                  //?
-        $data['general_news']   = $this->NewsModel->get_news_by_type('general_news', 1);                                //?
+        $data['general_news']   = $this->NewsModel->get_news_by_type('general_news', 1);
+        //?
+        // $data['interview']   = $this->NewsModel->get_news_by_type('interview', 10);
+
+        // ✅ INTERVIEW NEWS çəkmə və bölmə
+        $interviews = $this->NewsModel->get_news_by_type('interview', 10);
+
+        $data['last_interview'] = !empty($interviews)
+            ? $interviews[0]
+            : null;
+
+        $data['other_interviews'] = count($interviews) > 1
+            ? array_slice($interviews, 1)
+            : [];
+
+
+        //?
         //?
         // TOP SIDE
 
@@ -244,7 +260,7 @@ class UserController extends CI_Controller
         $data['news_list'] = $this->NewsModel->get_news_by_type_manual($category_slug);
         // $data['category'] = $category;
 
-        
+
 
         // View-i yüklə
         $this->load->view("front/pages/nakhchivan-style-01", $data);

@@ -64,88 +64,89 @@
         <div class="row">
 
 
-       <?php if (!empty($news_list)): ?>
-    <?php foreach ($news_list as $news): ?>
-        <div class="col-md-4 mb-4">
-            <div class="blog-post post-style-02">
+          <?php if (!empty($news_list)): ?>
+            <?php foreach ($news_list as $news): ?>
+              <div class="col-md-4 mb-4">
+                <div class="blog-post post-style-02">
 
-                <!-- ✅ Şəkil -->
-                <a href="<?= base_url($lang . '/' . t('news_link') . '/' . $news->slug); ?>">
+                  <!-- ✅ Şəkil -->
+                  <a href="<?= base_url($lang . '/' . t('news_link') . '/' . $news->slug); ?>">
                     <div class="blog-image">
-                        <img class="img-fluid aspect_ratio"
-                             src="<?= !empty($news->img) ? base_url('public/uploads/news/' . $news->img) : base_url('public/front/images/blog/01.jpg'); ?>"
-                             alt="<?= htmlspecialchars($news->{'title_' . $lang} ?? $news->title_az, ENT_QUOTES, 'UTF-8'); ?>">
+                      <img class="img-fluid aspect_ratio"
+                        src="<?= !empty($news->img) ? base_url('public/uploads/news/' . $news->img) : base_url('public/front/images/blog/01.jpg'); ?>"
+                        alt="<?= htmlspecialchars($news->{'title_' . $lang} ?? $news->title_az, ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
-                </a>
+                  </a>
 
-                <!-- ✅ Media Overlay -->
-                <div class="vcs-media-overlay">
+                  <!-- ✅ Media Overlay -->
+                  <div class="vcs-media-overlay">
 
                     <?php if (!empty($news->video)): ?>
-                        <a href="<?= base_url($lang . '/' . t('news_link') . '/' . $news->slug); ?>"
-                           class="vcs-media-badge vcs-video-badge">
-                            <i class="fa-solid fa-video"></i>
-                            <span><?= ($lang == 'az') ? 'Video' : 'Video'; ?></span>
-                        </a>
+                      <a href="<?= base_url($lang . '/' . t('news_link') . '/' . $news->slug); ?>"
+                        class="vcs-media-badge vcs-video-badge">
+                        <i class="fa-solid fa-video"></i>
+                        <span><?= ($lang == 'az') ? 'Video' : 'Video'; ?></span>
+                      </a>
                     <?php endif; ?>
 
                     <?php if (!empty($news->multi_img)): ?>
-                        <a href="<?= base_url($lang . '/' . t('news_link') . '/' . $news->slug); ?>"
-                           class="vcs-media-badge vcs-photo-badge">
-                            <i class="fa-solid fa-images"></i>
-                            <span><?= ($lang == 'az') ? 'Foto' : 'Photo'; ?></span>
-                        </a>
+                      <a href="<?= base_url($lang . '/' . t('news_link') . '/' . $news->slug); ?>"
+                        class="vcs-media-badge vcs-photo-badge">
+                        <i class="fa-solid fa-images"></i>
+                        <span><?= ($lang == 'az') ? 'Foto' : 'Photo'; ?></span>
+                      </a>
                     <?php endif; ?>
 
-                </div>
+                  </div>
 
-                <!-- ✅ Baxış sayı -->
-                <?php if (!empty($news->view_count)): ?>
+                  <!-- ✅ Baxış sayı -->
+                  <?php if (!empty($news->view_count)): ?>
                     <a href="<?= base_url($lang . '/' . t('news_link') . '/' . $news->slug); ?>">
-                        <div class="views-tag">
-                            <i class="fa-solid fa-eye"></i>
-                            <?= (int)$news->view_count; ?>
-                        </div>
+                      <div class="views-tag">
+                        <i class="fa-solid fa-eye"></i>
+                        <?= (int)$news->view_count; ?>
+                      </div>
                     </a>
-                <?php endif; ?>
+                  <?php endif; ?>
 
-                <!-- ✅ Tarix + Kateqoriya -->
-             <div class="d-flex justify-content-between align-items-center blog-post-meta time_style">
+                  <!-- ✅ Tarix + Kateqoriya -->
+                  <div class="d-flex justify-content-between align-items-center blog-post-meta time_style">
 
-    <?php if (!empty($news->{'category_name_' . $lang})): ?>
-        <a href="<?= base_url($lang . '/' . t('category_link') . '/' . $news->category_slug); ?>">
-            <span class="text-primary cateTransformTitle fontSystem_ui icon_color_genera cate-bg-<?= $news->category_slug; ?>">
-                <?= htmlspecialchars($news->{'category_name_' . $lang}, ENT_QUOTES, 'UTF-8'); ?>
-            </span>
-        </a>
-    <?php endif; ?>
+                    <?php if (!empty($news->{'category_name_' . $lang})): ?>
+                      <a href="<?= base_url($lang . '/' . t('category_link') . '/' . $news->category_slug); ?>">
+                        <span class="text-primary cateTransformTitle fontSystem_ui icon_color_genera"
+                          style="background: <?= category_color($news->category_slug); ?>;">
+                          <?= htmlspecialchars($news->{'category_name_' . $lang}, ENT_QUOTES, 'UTF-8'); ?>
+                        </span>
+                      </a>
+                    <?php endif; ?>
 
-    <?php if (!empty($news->created_at)): ?>
-        <time datetime="<?= $news->created_at; ?>" class="news-date">
-            <?= format_news_date($news->created_at, $lang); ?>
-        </time>
-    <?php endif; ?>
+                    <?php if (!empty($news->created_at)): ?>
+                      <time datetime="<?= $news->created_at; ?>" class="news-date">
+                        <?= format_news_date($news->created_at, $lang); ?>
+                      </time>
+                    <?php endif; ?>
 
-</div>
+                  </div>
 
-                <!-- ✅ Başlıq -->
-                <div class="blog-post-details mar_Top_other">
+                  <!-- ✅ Başlıq -->
+                  <div class="blog-post-details mar_Top_other">
                     <h6 class="blog-title fontSystem_ui setir"
-                        style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">
-                        <a href="<?= base_url($lang . '/' . t('news_link') . '/' . $news->slug); ?>">
-                            <?= htmlspecialchars($news->{'title_' . $lang} ?? $news->title_az, ENT_QUOTES, 'UTF-8'); ?>
-                        </a>
+                      style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">
+                      <a href="<?= base_url($lang . '/' . t('news_link') . '/' . $news->slug); ?>">
+                        <?= htmlspecialchars($news->{'title_' . $lang} ?? $news->title_az, ENT_QUOTES, 'UTF-8'); ?>
+                      </a>
                     </h6>
-                </div>
+                  </div>
 
-            </div>
-        </div>
-    <?php endforeach; ?>
-<?php else: ?>
-    <p class="text-muted">
-        <?= $lang == 'az' ? 'Xəbər tapılmadı.' : 'No news found.'; ?>
-    </p>
-<?php endif; ?>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <p class="text-muted">
+              <?= $lang == 'az' ? 'Xəbər tapılmadı.' : 'No news found.'; ?>
+            </p>
+          <?php endif; ?>
 
 
 
